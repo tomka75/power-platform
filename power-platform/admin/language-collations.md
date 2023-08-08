@@ -8,15 +8,9 @@ ms.topic: conceptual
 author: "NHelgren"
 ms.subservice: admin
 ms.author: nhelgren
-manager: kvivek
 ms.reviewer: matp
 search.audienceType: 
   - maker
-search.app:
-  - D365CE
-  - PowerApps
-  - Powerplatform
-  - Flow
 ---
 # Microsoft Dataverse language collations
 
@@ -40,7 +34,7 @@ A language includes the following information:
 
 - **LCID**: This is an identification number applied to languages in the Microsoft .NET framework to easily identify which language is being used. For example, 1033 is US English.
 
-- **Language**: The actual language. In some cases, names, country, and character dataset information have been added for disambiguation.
+- **Language**: The actual language. In some cases, names, country/region, and character dataset information have been added for disambiguation.
 
 - **Collation**: The language collation uses the case-sensitivity and accent-sensitivity options associated with the language (_CI, _AS, _AI) described earlier. 
 

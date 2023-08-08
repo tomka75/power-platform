@@ -1,21 +1,18 @@
 ---
 title: "Use Word templates to create standardized documents  | MicrosoftDocs"
-description: Use Word templates to create standardized documents
-
+description: Create a standardized document with one click using Word templates in Power Platform.
 ms.component: pa-admin
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 08/07/2023
 author: chrisgarty
 ms.subservice: admin
 ms.author: cgarty
-ms.reviewer: jimholtz
+ms.reviewer: sericks
+contributors: 
+    - ProfessorKendrick
+    - sriharibs-msft
 search.audienceType: 
   - admin
-search.app:
-  - D365CE
-  - PowerApps
-  - Powerplatform
-  - Flow
 ---
 # Use Word templates to create standardized documents
 
@@ -310,11 +307,13 @@ When you have your [!INCLUDE[pn_ms_Word_short](../includes/pn-ms-word-short.md)]
 ### Lists in created documents are not in the same order as records  
  Lists of records created from a custom template may not appear in the same order in [!INCLUDE[pn_ms_Word_short](../includes/pn-ms-word-short.md)] documents as the order in customer engagement apps. Records are listed in the order of the time and date they were created.  
 
+### Issue with right-to-left languages
+Content in right-to-left (RTL) languages may have some formatting issues in the Word file after the document is created.
+
 ### See also  
 
 [Analyze your data with Excel templates](../admin/analyze-your-data-with-excel-templates.md)
 
 [Troubleshooting Word templates](troubleshoot-word-templates-dynamics-365.md)
-
 
 [!INCLUDE[footer-include](../includes/footer-banner.md)]

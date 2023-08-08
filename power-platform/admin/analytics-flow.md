@@ -1,25 +1,18 @@
 ---
-title: "Administrator analytics and reports for Microsoft Power Automate"
+title: "View analytics for Power Automate cloud flows"
 description: "Admins can view Microsoft Power Automate analytics in the Power Platform admin center, including reports on run data of flows, flows created, usage, and errors."
-author: "MSFTMan"
-manager: kvivek
-
-ms.component: pa-admin
+author: StephenRauchPM 
 ms.topic: conceptual
-ms.date: 06/01/2022
+ms.date: 08/03/2023
 ms.subservice: admin
-ms.author: deonhe
+ms.author: stephenrauch
+ms.reviewer: sericks
 search.audienceType: 
   - admin
-search.app:
-  - D365CE
-  - PowerApps
-  - Powerplatform
-  - Flow
 ---
-# View analytics for flows
+# View analytics for cloud flows
 
-Environment admins can access analytics for Power Automate in the Microsoft [Power Platform admin center](https://admin.powerplatform.microsoft.com/analytics/flow). The reports provide insights into runs, usage, errors, types of flows created, shared flows, and details on connectors associated with all the different flow types like automated flows, button flows, scheduled flows, approval flows, business process flows. These reports do not offer insights for Desktop Flows.
+Environment admins can access analytics for Power Automate in the Microsoft [Power Platform admin center](https://admin.powerplatform.microsoft.com/analytics/flow). The reports provide insights into runs, usage, errors, types of flows created, shared flows, and details on connectors associated with all the different flow types like automated flows, button flows, scheduled flows, approval flows, business process flows. These reports do not offer insights for desktop flows.
 To access these reports:
 
 1. Go to the navigation bar on the left side.
@@ -41,7 +34,7 @@ For more information on the different roles for managing your tenant across the 
 
 When a user creates an environment in a region, the environment is hosted in that region. All data for that environment resides within that region for a maximum period of 28 days. 
 
-The data refresh cycle is about 3 hours and you can find the last refresh time at the top right corner of the page.
+The data refresh cycle is about 24 hours and you can find the last refresh time at the top right corner of the page.
 
 ## What are the available reports?
 

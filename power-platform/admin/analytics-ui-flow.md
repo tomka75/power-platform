@@ -1,22 +1,13 @@
 ---
-title: View desktop flows analytics in the Power Platform admin center | Microsoft Docs
+title: View analytics for Power Automate desktop flows | Microsoft Docs
 description: Learn about trends, usage patterns, and more analytics for desktop flows in the Power Platform admin center.
-services: ''
-suite: flow
-documentationcenter: na
-author: msftman
-manager: kvivek
-editor: ''
-tags: ''
+author: StephenRauchPM
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/01/2021
+ms.date: 08/03/2023
 ms.subservice: admin
-ms.author: DeonHe
-search.app: 
-  - Flow
+ms.author: stephenrauch
+ms.reviewer: sericks
 search.audienceType: 
   - flowadmin
 ---
@@ -25,13 +16,13 @@ search.audienceType:
 
 As an admin, you will need to view the overall status of automation that runs in your organization. There are two options to monitor the analytics for automation that's built with desktop flows:
 
-1. The Power Platform admin center.
-1. The Center of Excellence (CoE) Starter Kit.
+- The Power Platform admin center.
+- The Center of Excellence (CoE) Starter Kit.
 
 This article discusses the viewing desktop flows analytics reports in the Power Platform admin center.
 
 
-The easiest option for an admin to view analytics for the desktop flows in their organization is to visit Power Platform admin center (PPAC). In the PPAC by default, you will find the following three reports:
+The easiest option for an admin to view analytics for the desktop flows in their organization is to visit Power Platform admin center. You'll find the following three reports:
 
 Report | Description
 --- | ---
@@ -39,13 +30,18 @@ Runs | This report gives you an overview of the daily, weekly, and monthly deskt
 Usage | This report shows you the desktop flows that are being used most, giving you insights into your automation inventory.
 Created | This report shows you analytics against recently created desktop flows, giving you insights into your most active desktop flows makers.
 
+## Data storage
+When a user creates an environment in a region, the environment is hosted in that region. All data for that environment resides within that region for a maximum period of 28 days.
+
+The data refresh cycle is about 24 hours and you can find the last refresh time at the top-right corner of the page.
+
 ## Prerequisites
 
 You must have the **environment admin** privilege to access the Power Platform admin center reports.
 
 To access the reports:
 
-1. Sign into [Power Automate]().
+1. Sign into [Power Automate](https://make.powerautomate.com).
 
    > [!NOTE]
    > You may have to select your country/region if it's your first time signing in.

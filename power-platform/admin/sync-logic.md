@@ -1,20 +1,16 @@
 ---
 title: Synchronization logic for appointments, contacts, and tasks
 description: Learn how appointments, contacts, and tasks are synchronized between Dynamics 365 and Outlook.
-author: jimholtz
+author: danamartens
 ms.service: power-platform
 ms.component: pa-admin
 ms.topic: conceptual
-ms.date: 08/02/2022
+ms.date: 07/18/2023
 ms.subservice: admin
-ms.author: jimholtz
+ms.author: dmartens
+ms.reviewer: sericks
 search.audienceType: 
   - admin
-search.app:
-  - D365CE
-  - PowerApps
-  - Powerplatform
-  - Flow
 ---
 
 # Synchronization logic for appointments, contacts, and tasks
@@ -67,7 +63,9 @@ How appointments sync between Dynamics 365 and Exchange depends on the sync dire
 
 ### Appointment organizer
 
-The appointment organizer is a key field for appointment synchronization. It drives different synchronization behaviors. When you create appointments using customizations, make sure that the organizer is specified correctly. The organizer field isn't exposed on the appointment form by default. You can add it to forms, views, or advanced find queries, as needed, to confirm the value is present and correct.
+The appointment organizer is a key field for appointment synchronization. It drives different synchronization behaviors. For example, only the Dynaamics 365 appointment organizer can synchronize and distribute appointments from Dynamics 365 to Exchange attendees. When you create appointments using customizations such as Power Automate or custom code, make sure the organizer is specified correctly. The organizer field isn't exposed on the appointment form by default. You can add it to forms, views, or advanced find queries, as needed, to confirm the value is present and correct.
+
+If an appointment organizer is changed in Dynamics 365 after it has been synchronized to Exchange, this may cause the original organizer to issue a cancellation. This can happen because the appointment no longer meets the conditions of the user’s sync filters. Additionally, the new organizer may synchronize the appointment as a new meeting in Exchange. The behavior of sending a cancellation from the previous organizer can be modified using the [OrgDBOrgSetting](https://support.microsoft.com/en-us/topic/orgdborgsettings-tool-for-microsoft-dynamics-crm-20a10f46-2a24-a156-7144-365d49b842ba) named DistinctPhysicalAndLogicalDeletesForExchangeSync.
 
 > [!NOTE]
 > An appointment created in Dynamics 365 will appear as created by SYSTEM if the following conditions are true:
@@ -80,9 +78,9 @@ The appointment organizer is a key field for appointment synchronization. It dri
 
 - **Mapping:** Appointments in Dynamics 365 sync to Exchange as meetings.
 
-- **Appointment status:** If the appointment status in Dynamics 365 is **Completed**, **Canceled**, or **Free**, the appointment status syncs to Exchange as **Free**.
+- **Appointment status:** If the appointment status in Dynamics 365 is **Completed**, **Canceled**, or **Free** (Open), the appointment status syncs to Exchange as **Free**.
 
-- **Reminder:** No reminder is set if the appointment is more than seven days in the past or the appointment status is **Free**.
+- **Reminder:** No reminder is set if the appointment is more than seven days in the past or the appointment status is **Free** (Open).
 
 - **Invitations:** No invitation is sent if:
 
@@ -125,6 +123,8 @@ If the organizer has deleted past instances of the series, then Dynamics 365 see
 
 - **Appointment status and Free/Busy state:** If the appointment state in Exchange is **Free**, the appointment state syncs to Dynamics 365 as **Free**. If the state is **Completed** or **Canceled** in Dynamics 365, the appointment status in Dynamics 365 is set to **Completed**. If the state is **Open** in Dynamics 365, the appointment status is set to **Free**. Working elsewhere, Free/Busy status syncs to Dynamics 365 as state **Open** and status **Free**.
 
+- **Appointments with Completed or Canceled state in Dynamics 365:** If the appointment state in Dynamics 365 is **Completed** or **Canceled**, any changes to the meeting in Exchange will not sync to Dynamics 365.
+
 - **Appointment booking and conflict management:** When an appointment is tracked to Dynamics 365, server-side sync uses the booking API to make sure that attendees are available at the specified time. For example, if the organizer's calendar in Dynamics 365 has another appointment at the same time, the booking fails, and the appointment isn't synced. The user can [address the scheduling conflict](https://go.microsoft.com/fwlink/?linkid=2187456), select to ignore it, and let the appointment sync anyway. Booking from Dynamics 365 in Outlook automatically suppresses the scheduling conflict. For more information, see [A scheduling conflict was found when saving appointment [appointment subject] from Exchange to Microsoft Dynamics 365](/troubleshoot/dynamics-365/sales/scheduling-conflict-saving-appointment).
 
 #### Syncing canceled and deleted appointments from Exchange to Dynamics 365
@@ -151,7 +151,10 @@ When a tracked appointment or an exception appointment is deleted in Exchange, t
 
 - **Address synchronization:** See [Address synchronization for contacts](/dynamics365/outlook-addin/admin-guide/configure-synchronization-appointments-contacts-tasks#address-synchronization-for-contacts).
 
-- **Deleted contacts:** Contacts that are deleted in Dynamics 365 are deleted in Exchange only if the syncing user isn't the owner of the original contact.
+- **Deleted contacts:**    
+  - Contacts deleted in Dynamics 365 are deleted in Exchange only if the syncing user isn't the owner of the contact.
+  - Contacts deleted in Exchange are deleted in Dynamics 365 only if the syncing user is the owner of the contact.
+
 
 ## Syncing tasks
 
